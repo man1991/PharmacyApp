@@ -1,0 +1,11 @@
+[
+  {
+    "id": "0ba2a704-6e06-4184-814f-a4dddfd73a84",
+    "medicineId": "79b9caf4-2e60-4488-8c17-aa1c30a813dc",
+    "medicineName": "Aspirin",
+    "quantitySold": 4,
+    "unitPrice": 19,
+    "totalAmount": 76,
+    "saleDate": "2026-08-19T05:36:43.4567424Z"
+  }
+]

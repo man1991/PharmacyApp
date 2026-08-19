@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABC Pharmacy - Medicine Tracker</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <h1>ABC Pharmacy &mdash; Medicine Tracker</h1>
+  </header>
+
+  <!-- Global banner used for user-friendly success / error messages -->
+  <div id="notification" class="notification hidden" role="alert"></div>
+
+  <main class="container">
+
+    <!-- ============================= Toolbar: search + add ============================= -->
+    <section class="toolbar">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search medicine by name..." />
+        <button id="searchBtn" class="btn btn-secondary">Search</button>
+        <button id="clearSearchBtn" class="btn btn-link">Clear</button>
+      </div>
+      <button id="openAddModalBtn" class="btn btn-primary">+ Add Medicine</button>
+    </section>
+
+    <!-- ============================= Legend ============================= -->
+    <section class="legend">
+      <span class="legend-item"><span class="swatch swatch-expiry"></span> Expiring within 30 days</span>
+      <span class="legend-item"><span class="swatch swatch-lowstock"></span> Low stock (&lt; 10 units)</span>
+    </section>
+
+    <!-- ============================= Medicine grid ============================= -->
+    <section class="grid-wrapper">
+      <table class="medicine-grid">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Brand</th>
+            <th>Expiry Date</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="medicineTableBody">
+          <!-- Rows injected by js/app.js -->
+        </tbody>
+      </table>
+      <p id="emptyState" class="empty-state hidden">No medicines found.</p>
+      <p id="loadingState" class="loading-state">Loading medicines...</p>
+    </section>
+
+    <!-- ============================= Sales history ============================= -->
+    <section class="sales-section">
+      <h2>Recent Sales</h2>
+      <table class="sales-grid">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Medicine</th>
+            <th>Qty Sold</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="salesTableBody"></tbody>
+      </table>
+      <p id="salesEmptyState" class="empty-state hidden">No sales recorded yet.</p>
+    </section>
+
+  </main>
+
+  <!-- ============================= Add Medicine Modal ============================= -->
+  <div id="addModal" class="modal-overlay hidden">
+    <div class="modal">
+      <h2>Add Medicine</h2>
+      <form id="addMedicineForm" novalidate>
+        <div class="form-group">
+          <label for="fullName">Full Name *</label>
+          <input type="text" id="fullName" name="fullName" required maxlength="200" />
+          <span class="field-error" data-error-for="fullName"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="brand">Brand *</label>
+          <input type="text" id="brand" name="brand" required maxlength="150" />
+          <span class="field-error" data-error-for="brand"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="expiryDate">Expiry Date *</label>
+            <input type="date" id="expiryDate" name="expiryDate" required />
+            <span class="field-error" data-error-for="expiryDate"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity">Quantity *</label>
+            <input type="number" id="quantity" name="quantity" required min="0" step="1" />
+            <span class="field-error" data-error-for="quantity"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price *</label>
+            <input type="number" id="price" name="price" required min="0" step="0.01" />
+            <span class="field-error" data-error-for="price"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" maxlength="1000" rows="3"></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelAddBtn" class="btn btn-link">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Medicine</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================= Sell Medicine Modal ============================= -->
+  <div id="sellModal" class="modal-overlay hidden">
+    <div class="modal">
+      <h2>Record Sale</h2>
+      <p id="sellModalMedicineName" class="sell-modal-subtitle"></p>
+      <form id="sellMedicineForm" novalidate>
+        <input type="hidden" id="sellMedicineId" />
+        <div class="form-group">
+          <label for="sellQuantity">Quantity to sell *</label>
+          <input type="number" id="sellQuantity" required min="1" step="1" />
+          <span class="field-error" data-error-for="sellQuantity"></span>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancelSellBtn" class="btn btn-link">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm Sale</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

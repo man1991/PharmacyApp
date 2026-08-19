@@ -1,0 +1,203 @@
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --danger: #dc2626;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f8fafc;
+  --expiry-bg: #fecaca;
+  --lowstock-bg: #fef08a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-header {
+  background: var(--primary);
+  color: white;
+  padding: 1.25rem 2rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 3rem;
+}
+
+/* ----------------------------- Notification banner ----------------------------- */
+.notification {
+  max-width: 1100px;
+  margin: 1rem auto 0;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.notification.success { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.notification.error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+.hidden { display: none !important; }
+
+/* ----------------------------- Toolbar ----------------------------- */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.search-box {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-box input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  min-width: 260px;
+}
+
+/* ----------------------------- Buttons ----------------------------- */
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-secondary { background: white; border: 1px solid var(--border); color: var(--text); }
+.btn-link { background: transparent; color: var(--muted); }
+.btn-danger { background: var(--danger); color: white; }
+.btn-small { padding: 0.3rem 0.6rem; font-size: 0.85rem; }
+
+/* ----------------------------- Legend ----------------------------- */
+.legend {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.legend-item { display: flex; align-items: center; gap: 0.4rem; }
+.swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+.swatch-expiry { background: var(--expiry-bg); }
+.swatch-lowstock { background: var(--lowstock-bg); }
+
+/* ----------------------------- Grid ----------------------------- */
+.grid-wrapper {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr.row-expiry { background: var(--expiry-bg); }
+tbody tr.row-lowstock { background: var(--lowstock-bg); }
+/* If both conditions apply, stripe the row so both signals stay visible */
+tbody tr.row-expiry.row-lowstock {
+  background: repeating-linear-gradient(
+    45deg, var(--expiry-bg), var(--expiry-bg) 10px, var(--lowstock-bg) 10px, var(--lowstock-bg) 20px
+  );
+}
+
+.empty-state, .loading-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+}
+
+/* ----------------------------- Sales section ----------------------------- */
+.sales-section { margin-top: 2rem; }
+.sales-section h2 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+.sales-grid { background: white; border-radius: 8px; border: 1px solid var(--border); }
+
+/* ----------------------------- Modal ----------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  background: white;
+  border-radius: 10px;
+  padding: 1.75rem;
+  width: 480px;
+  max-width: 92vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal h2 { margin-top: 0; }
+
+.sell-modal-subtitle { color: var(--muted); margin-top: -0.5rem; }
+
+.form-group { margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+.form-row { display: flex; gap: 0.75rem; }
+.form-row .form-group { flex: 1; }
+
+label { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+
+input, textarea {
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 0.8rem;
+  min-height: 1em;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}

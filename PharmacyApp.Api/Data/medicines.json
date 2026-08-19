@@ -1,0 +1,46 @@
+[
+  {
+    "id": "b1a6b1a2-4e2a-4c9a-9f0a-000000000001",
+    "fullName": "Paracetamol 500mg",
+    "notes": "For fever and mild pain relief",
+    "expiryDate": "2026-09-10T00:00:00",
+    "quantity": 120,
+    "price": 25.50,
+    "brand": "Cipla",
+    "isNearExpiry": true,
+    "isLowStock": false
+  },
+  {
+    "id": "b1a6b1a2-4e2a-4c9a-9f0a-000000000002",
+    "fullName": "Amoxicillin 250mg",
+    "notes": "Antibiotic - complete full course",
+    "expiryDate": "2026-08-30T00:00:00",
+    "quantity": 8,
+    "price": 85.00,
+    "brand": "Sun Pharma",
+    "isNearExpiry": true,
+    "isLowStock": true
+  },
+  {
+    "id": "b1a6b1a2-4e2a-4c9a-9f0a-000000000003",
+    "fullName": "Cetirizine 10mg",
+    "notes": "Antihistamine for allergies",
+    "expiryDate": "2027-01-15T00:00:00",
+    "quantity": 60,
+    "price": 15.75,
+    "brand": "Dr. Reddy\u0027s",
+    "isNearExpiry": false,
+    "isLowStock": false
+  },
+  {
+    "id": "79b9caf4-2e60-4488-8c17-aa1c30a813dc",
+    "fullName": "Aspirin",
+    "notes": "",
+    "expiryDate": "2026-07-14T00:00:00",
+    "quantity": 10,
+    "price": 19,
+    "brand": "Ecosprin",
+    "isNearExpiry": true,
+    "isLowStock": false
+  }
+]
